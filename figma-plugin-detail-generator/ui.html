@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<style>
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, "Inter", "Malgun Gothic", sans-serif;
+    background: #1E1E1E;
+    color: #fff;
+    margin: 0;
+    padding: 20px;
+  }
+  h2 { font-size: 15px; margin: 0 0 4px; }
+  p.desc { font-size: 12px; color: #999; margin: 0 0 14px; line-height: 1.5; }
+  textarea {
+    width: 100%;
+    height: 300px;
+    background: #111;
+    color: #8BE28B;
+    border: 1px solid #333;
+    border-radius: 6px;
+    padding: 10px;
+    font-family: "SF Mono", Menlo, monospace;
+    font-size: 11px;
+    resize: vertical;
+  }
+  .row { display: flex; gap: 8px; margin-top: 12px; }
+  button {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  #cancel { background: #333; color: #fff; }
+  #generate { background: #7B61FF; color: #fff; }
+  #status {
+    margin-top: 12px;
+    padding: 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    display: none;
+    line-height: 1.5;
+  }
+  #status.ok { background: #163020; color: #7CFFA0; display: block; }
+  #status.err { background: #301616; color: #FF8080; display: block; }
+  a { color: #A996FF; }
+</style>
+</head>
+<body>
+  <h2>Detail Page Layout Generator</h2>
+  <p class="desc">클로드(AI)가 생성한 JSON 데이터를 붙여넣고 "생성"을 클릭하세요. 상세페이지 레이아웃이 자동으로 만들어집니다.</p>
+  <textarea id="json" placeholder='{"sections": [{"type": "SECTION", "name": "Section_01_Hook", "children": [...] }]}'></textarea>
+  <div class="row">
+    <button id="cancel">취소</button>
+    <button id="generate">생성</button>
+  </div>
+  <div id="status"></div>
+
+<script>
+  document.getElementById('cancel').onclick = function () {
+    parent.postMessage({ pluginMessage: { type: 'cancel' } }, '*');
+  };
+  document.getElementById('generate').onclick = function () {
+    var json = document.getElementById('json').value;
+    parent.postMessage({ pluginMessage: { type: 'generate', json: json } }, '*');
+  };
+  window.onmessage = function (event) {
+    var msg = event.data.pluginMessage;
+    if (!msg || msg.type !== 'result') return;
+    var el = document.getElementById('status');
+    el.textContent = msg.message;
+    el.className = msg.ok ? 'ok' : 'err';
+  };
+</script>
+</body>
+</html>

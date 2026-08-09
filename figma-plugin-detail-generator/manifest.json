@@ -1,0 +1,12 @@
+{
+  "name": "Detail Page Layout Generator",
+  "id": "detail-page-layout-generator-local",
+  "api": "1.0.0",
+  "main": "code.js",
+  "ui": "ui.html",
+  "editorType": ["figma"],
+  "networkAccess": {
+    "allowedDomains": ["*"],
+    "reasoning": "IMAGE_AREA에 이미지 URL이 포함된 경우 fetch로 불러와 실제 이미지를 삽입하기 위함. 수업/개인용으로 배포 범위를 넓혀둔 것이므로, 특정 이미지 소스만 쓴다면 allowedDomains를 해당 도메인으로 좁히는 것을 권장."
+  }
+}

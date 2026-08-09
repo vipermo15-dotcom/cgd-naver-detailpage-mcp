@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>네이버 스마트스토어 상세페이지 MCP교육 자료 다운로드</title>
+<style>
+  :root {
+    --paper: #f7f5ef;
+    --paper-raised: #fffdf8;
+    --ink: #1c1b1e;
+    --ink-soft: #55524c;
+    --ink-faint: #918c7e;
+    --rule: #d8d3c7;
+    --accent: #c34a2c;
+    --accent-soft: #c34a2c1a;
+    --accent-2: #2e5339;
+    --accent-2-soft: #2e53391a;
+    --mono: ui-monospace, "SF Mono", "Menlo", "Consolas", monospace;
+    --sans: -apple-system, "Apple SD Gothic Neo", "Pretendard", "Malgun Gothic", "Segoe UI", sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --paper: #17191b; --paper-raised: #1f2123; --ink: #ece8df; --ink-soft: #a39c8c;
+      --ink-faint: #6b665a; --rule: #34302a; --accent: #e2734f; --accent-soft: #e2734f26;
+      --accent-2: #6fae7c; --accent-2-soft: #6fae7c22;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--sans); line-height: 1.65; }
+  .page { max-width: 780px; margin: 0 auto; padding: 4.5em 2em 6em; }
+  .doc-head {
+    display: flex; justify-content: space-between; align-items: baseline;
+    border-bottom: 1px solid var(--rule); padding-bottom: .8em; margin-bottom: .4em;
+    font-family: var(--mono); font-size: 11.5px; letter-spacing: .06em; color: var(--ink-faint);
+    text-transform: uppercase;
+  }
+  .doc-head .accent { color: var(--accent); }
+  h1 { font-size: clamp(28px, 3.8vw, 40px); font-weight: 800; letter-spacing: -0.01em; margin: .5em 0 .1em; }
+  .subtitle { color: var(--ink-soft); font-size: 15px; margin: 0 0 2em; }
+  h2.section {
+    font-size: 13px; font-family: var(--mono); letter-spacing: .06em; text-transform: uppercase;
+    color: var(--ink-faint); margin: 2.4em 0 .8em; padding-top: 1.2em; border-top: 1px solid var(--rule);
+  }
+  h2.section:first-of-type { border-top: none; padding-top: 0; margin-top: 1em; }
+
+  .card {
+    display: flex; justify-content: space-between; align-items: center; gap: 1em;
+    background: var(--paper-raised); border: 1px solid var(--rule);
+    padding: 1.2em 1.4em; margin-bottom: .9em;
+  }
+  .card .meta h3 { margin: 0 0 .25em; font-size: 17px; }
+  .card .meta p { margin: 0; color: var(--ink-soft); font-size: 13.5px; }
+  .card .links { display: flex; gap: .5em; flex-shrink: 0; }
+  .card a.dl {
+    font-family: var(--mono); font-size: 12px; letter-spacing: .03em; text-decoration: none;
+    color: var(--ink); background: var(--accent-soft); border: 1px solid var(--accent);
+    padding: .5em .9em; white-space: nowrap;
+  }
+  .card a.dl:hover { background: var(--accent); color: var(--paper-raised); }
+  .card a.view {
+    font-family: var(--mono); font-size: 12px; letter-spacing: .03em; text-decoration: none;
+    color: var(--ink-soft); border: 1px solid var(--rule); padding: .5em .9em; white-space: nowrap;
+  }
+  .card a.view:hover { border-color: var(--ink-soft); color: var(--ink); }
+  .card.plugin { border-color: var(--accent-2); }
+  .card.plugin a.dl { border-color: var(--accent-2); }
+  .card.plugin a.dl:hover { background: var(--accent-2); }
+
+  .footer-note {
+    margin-top: 3em; padding-top: 1em; border-top: 1px solid var(--rule);
+    font-family: var(--mono); font-size: 11.5px; color: var(--ink-faint); text-align: center;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="doc-head"><span class="accent">PROOF · DOWNLOAD</span><span>NAVER SMARTSTORE · MCP</span></div>
+  <h1>네이버 스마트스토어 상세페이지 MCP교육 자료</h1>
+  <p class="subtitle">서울시기술교육원 컴퓨터그래픽디자인과<br>Claude + Figma MCP로 상세페이지를 자동화하는 4종 가이드와 실제 동작하는 Figma 플러그인입니다. 로그인 없이 바로 보거나 내려받을 수 있습니다.</p>
+
+  <h2 class="section">가이드</h2>
+
+  <div class="card">
+    <div class="meta"><h3>06 · AI 이미지 생성 + Figma 레이아웃 자동화 가이드</h3><p>공통 JSON 스펙, 트랙A(플러그인)/트랙B(MCP) 이미지 생성 연동, ComfyUI·미드저니·Gemini·GPT 비교</p></div>
+    <div class="links"><a class="view" href="06_AI이미지생성_가이드.html">웹으로 보기</a><a class="dl" href="06_AI이미지생성_가이드.pdf" download>PDF 다운로드</a></div>
+  </div>
+
+  <div class="card">
+    <div class="meta"><h3>07 · Figma MCP 연동 설치 가이드</h3><p>트랙A(무료 플러그인)/트랙B(진짜 MCP) 선택 기준, 설치 단계, 요금제 제약, 트러블슈팅</p></div>
+    <div class="links"><a class="view" href="07_Figma_MCP_연동_설치가이드.html">웹으로 보기</a><a class="dl" href="07_Figma_MCP_연동_설치가이드.pdf" download>PDF 다운로드</a></div>
+  </div>
+
+  <div class="card">
+    <div class="meta"><h3>08 · 플랫폼별 상세페이지 제작 가이드</h3><p>네이버 스마트스토어 · 쿠팡 · 빌트인(카페24) 규격 비교와 수업 적용 순서</p></div>
+    <div class="links"><a class="view" href="08_플랫폼별_상세페이지_제작가이드.html">웹으로 보기</a><a class="dl" href="08_플랫폼별_상세페이지_제작가이드.pdf" download>PDF 다운로드</a></div>
+  </div>
+
+  <div class="card">
+    <div class="meta"><h3>09 · 2026 상세페이지 트렌드 — 취업시장 반영법</h3><p>숏폼·인터랙티브 스크롤·AI 이미지·미니멀리즘·발견형 구매를 포트폴리오에 남기는 법</p></div>
+    <div class="links"><a class="view" href="09_상세페이지_트렌드_2026_취업시장.html">웹으로 보기</a><a class="dl" href="09_상세페이지_트렌드_2026_취업시장.pdf" download>PDF 다운로드</a></div>
+  </div>
+
+  <h2 class="section">도구</h2>
+
+  <div class="card plugin">
+    <div class="meta"><h3>Detail Page Layout Generator (커스텀 Figma 플러그인)</h3><p>클로드가 만든 JSON을 붙여넣으면 상세페이지 레이아웃을 자동 생성 — Figma 무료 계정에서도 동작</p></div>
+    <div class="links"><a class="view" href="figma-plugin-detail-generator/README.html">사용법 보기</a><a class="dl" href="figma-plugin-detail-generator.zip" download>ZIP 다운로드</a></div>
+  </div>
+
+  <div class="footer-note">서울시기술교육원 컴퓨터그래픽디자인과 · 네이버 스마트스토어 상세페이지 MCP교육</div>
+</div>
+</body>
+</html>

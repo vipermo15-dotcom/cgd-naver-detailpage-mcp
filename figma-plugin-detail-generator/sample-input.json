@@ -1,0 +1,94 @@
+{
+  "label": "샘플 상세페이지 - 탁상용 미니 가습기",
+  "sections": [
+    {
+      "type": "SECTION",
+      "name": "Section_01_Hook",
+      "width": 1200,
+      "background": "#111111",
+      "children": [
+        {
+          "type": "TEXT",
+          "name": "Brand",
+          "content": "MISTY HOME",
+          "fontSize": 20,
+          "fontWeight": 700,
+          "color": "#8BE28B",
+          "textAlign": "CENTER"
+        },
+        {
+          "type": "TEXT",
+          "name": "Main_Copy",
+          "content": "책상 위 건조함, 이제 신경 끄세요",
+          "fontSize": 40,
+          "fontWeight": 700,
+          "color": "#FFFFFF",
+          "textAlign": "CENTER"
+        },
+        {
+          "type": "TEXT",
+          "name": "Sub_Copy",
+          "content": "무소음 초음파 가습 · 8시간 연속 사용 · USB-C 충전",
+          "fontSize": 20,
+          "fontWeight": 400,
+          "color": "#AAAAAA",
+          "textAlign": "CENTER"
+        },
+        {
+          "type": "IMAGE_AREA",
+          "name": "IMAGE_AREA",
+          "width": 760,
+          "height": 600,
+          "background": "#2A2A2A",
+          "prompt": "책상 위에 놓인 미니멀한 원통형 미니 가습기, 은은한 수증기가 위로 퍼지는 모습, 따뜻한 조명, 제품 사진 스타일, 배경은 흐린 홈오피스"
+        }
+      ]
+    },
+    {
+      "type": "SECTION",
+      "name": "Section_02_Trust_CTA",
+      "width": 1200,
+      "background": "#FFFFFF",
+      "children": [
+        {
+          "type": "TEXT",
+          "name": "Price_Info",
+          "content": "미스티홈 탁상용 미니 가습기",
+          "fontSize": 26,
+          "fontWeight": 500,
+          "color": "#111111",
+          "textAlign": "CENTER"
+        },
+        {
+          "type": "TEXT",
+          "name": "Price_Value",
+          "content": "19,900원",
+          "fontSize": 36,
+          "fontWeight": 700,
+          "color": "#111111",
+          "textAlign": "CENTER"
+        },
+        {
+          "type": "TEXT",
+          "name": "Trust",
+          "content": "무료배송 · 1년 A/S · 네이버페이 구매만족도 4.9",
+          "fontSize": 20,
+          "fontWeight": 400,
+          "color": "#888888",
+          "textAlign": "CENTER"
+        },
+        {
+          "type": "BUTTON",
+          "name": "CTA",
+          "text": "지금 구매하기",
+          "background": "#FF6B00",
+          "color": "#FFFFFF",
+          "width": 320,
+          "height": 70,
+          "fontSize": 24,
+          "fontWeight": 700
+        }
+      ]
+    }
+  ]
+}
