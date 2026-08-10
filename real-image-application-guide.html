@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>6차시. 실제 제품 이미지로 템플릿 완성하기</title>
+<style>
+:root {
+  --paper: #f5f7f4; --paper-raised: #ffffff; --ink: #101b14; --ink-soft: #4a5c50;
+  --ink-faint: #85958c; --rule: #ccd9d0; --accent: #03A64A; --accent-soft: #03A64A1a;
+  --accent-2: #1D3A5F; --accent-2-soft: #1D3A5F1a;
+  --mono: ui-monospace, "SF Mono", "Menlo", "Consolas", monospace;
+  --sans: -apple-system, "Apple SD Gothic Neo", "Pretendard", "Malgun Gothic", "Segoe UI", sans-serif;
+}
+:root[data-theme="dark"] {
+  --paper: #0d1512; --paper-raised: #16211c; --ink: #eaf3ee; --ink-soft: #a7beaf;
+  --ink-faint: #6e8579; --rule: #253a30; --accent: #3DDC84; --accent-soft: #3DDC8426;
+  --accent-2: #6E9BCB; --accent-2-soft: #6E9BCB22;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0d1512; --paper-raised: #16211c; --ink: #eaf3ee; --ink-soft: #a7beaf;
+    --ink-faint: #6e8579; --rule: #253a30; --accent: #3DDC84; --accent-soft: #3DDC8426;
+    --accent-2: #6E9BCB; --accent-2-soft: #6E9BCB22;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--sans); line-height: 1.68; }
+.page { max-width: 780px; margin: 0 auto; padding: 4.5em 2em 6em; }
+.doc-head {
+  display: flex; justify-content: space-between; align-items: baseline;
+  border-bottom: 1px solid var(--rule); padding-bottom: .8em; margin-bottom: .4em;
+  font-family: var(--mono); font-size: 11.5px; letter-spacing: .06em; color: var(--ink-faint);
+  text-transform: uppercase;
+}
+.doc-head .accent { color: var(--accent); }
+h1 { font-size: clamp(28px, 3.8vw, 40px); font-weight: 800; letter-spacing: -0.01em; margin: .5em 0 .1em; text-wrap: balance; }
+.subtitle { color: var(--ink-soft); font-size: 15px; margin: 0 0 2.4em; }
+h2 { font-size: 22px; font-weight: 800; letter-spacing: -0.005em; margin: 2.2em 0 .5em; padding-top: 1.3em; border-top: 1px solid var(--rule); }
+h2:first-of-type { border-top: none; padding-top: 0; }
+h3 { font-size: 16.5px; font-weight: 700; margin: 1.5em 0 .4em; color: var(--ink); }
+h4 { font-size: 14px; font-weight: 700; margin: 1.2em 0 .3em; color: var(--ink-soft); }
+p { margin: .6em 0; white-space: pre-line; }
+strong { font-weight: 700; }
+hr { border: none; border-top: 1px solid var(--rule); margin: 2.2em 0; }
+a { color: var(--accent); }
+pre.prompt {
+  font-family: var(--mono); font-size: 13.5px; background: var(--ink); color: var(--paper);
+  padding: 1em 1.2em; line-height: 1.6; white-space: pre-wrap; word-break: break-word;
+  margin: .8em 0; border-left: 3px solid var(--accent); overflow-x: auto;
+}
+pre.prompt code { background: none; color: inherit; padding: 0; font-size: inherit; font-family: inherit; }
+:not(pre) > code { font-family: var(--mono); background: var(--accent-soft); color: var(--accent); padding: .1em .35em; font-size: .88em; border-radius: 2px; }
+table { border-collapse: collapse; width: 100%; font-size: 14px; margin: 1em 0; display: block; overflow-x: auto; }
+th, td { text-align: left; padding: .55em .8em .55em 0; border-bottom: 1px solid var(--rule); vertical-align: top; }
+th { font-family: var(--mono); font-size: 10.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-faint); font-weight: 500; }
+ol.steps { counter-reset: step; list-style: none; margin: .8em 0; padding: 0; }
+ol.steps li { counter-increment: step; display: grid; grid-template-columns: 1.8em 1fr; gap: .6em; padding: .5em 0; border-bottom: 1px solid var(--rule); align-items: baseline; font-size: 15px; }
+ol.steps li::before { content: counter(step, decimal-leading-zero); font-family: var(--mono); color: var(--accent); font-size: 13px; }
+ol.steps li:last-child { border-bottom: none; }
+ul.checklist { list-style: none; margin: .8em 0; padding: 0; }
+ul.checklist li { padding: .5em 0; border-bottom: 1px solid var(--rule); display: flex; gap: .7em; font-size: 15px; align-items: baseline; }
+ul.checklist li::before { content: "☐"; color: var(--accent); flex-shrink: 0; }
+ul.checklist li:last-child { border-bottom: none; }
+ul:not(.checklist) { padding-left: 1.3em; margin: .8em 0; }
+ul:not(.checklist) li { margin: .35em 0; font-size: 15px; }
+ul:not(.checklist) li::marker { color: var(--accent); }
+blockquote { margin: 1em 0; padding: .85em 1.1em; background: var(--accent-soft); border-left: 3px solid var(--accent); font-size: 14.5px; color: var(--ink-soft); }
+blockquote p { margin: 0; white-space: normal; }
+.footer-note { margin-top: 3em; padding-top: 1em; border-top: 1px solid var(--rule); font-family: var(--mono); font-size: 11.5px; color: var(--ink-faint); text-align: center; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="doc-head"><span class="accent">PROOF · SMARTSTORE MCP WORKBOOK</span><span>SESSION 6 · REAL IMAGE APPLICATION</span></div>
+<h1>6차시 — 실제 제품 이미지로 템플릿 완성하기</h1>
+<h2>이 차시가 필요한 이유</h2>
+<p class="subtitle">1~5차시에서 만든 카드 컴포넌트와 상세페이지는 전부 <strong>회색 placeholder</strong>로 채워져 있다. 포트폴리오로 제출하려면 실제(또는 실제처럼 보이는) 상품 이미지를 넣어 완성해야 한다. 이 차시는 그 "마지막 한 걸음"을 무료 도구 3종(Figma·Claude·GPT)만으로 끝내는 법을 다룬다.</p>
+<p><strong>전제</strong>: 학생은 이미 1~5차시를 마쳐 상품분석(WORK01~04)과 카피(WORK06)를 갖고 있고, <code>07_Figma_MCP_연동_설치가이드.md</code>의 <strong>트랙 A(무료 플러그인)</strong> 또는 직접 Figma 작업으로 카드/상세페이지 템플릿을 만들어 둔 상태다.</p>
+<hr />
+<h2>반드시 먼저 확인: 무료 도구 제약</h2>
+<table>
+<thead>
+<tr>
+<th>도구</th>
+<th>이 차시에서 하는 일</th>
+<th>무료 플랜 제약</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ChatGPT Free</td>
+<td>상품 이미지 분석(색상·형태·무드 추출)</td>
+<td><strong>하루 이미지 업로드 2장 제한</strong>, 기본 모델 GPT-4o(트래픽 많으면 GPT-4o mini로 자동 전환)</td>
+</tr>
+<tr>
+<td>Claude Free</td>
+<td>이미지 분석 결과를 카피/톤에 반영, 섹션별 텍스트 재조정</td>
+<td>대화량이 많으면 사용량 한도에 도달할 수 있음(세션당 메시지 수 제한)</td>
+</tr>
+<tr>
+<td>Figma Starter</td>
+<td>템플릿에 이미지 적용, 색상/레이아웃 미세조정</td>
+<td>Dev Mode MCP 실연동은 월 6회 제한 — 이 차시는 대부분 <strong>수동 Fill 교체</strong>로 진행하므로 이 제약과 크게 상관없음</td>
+</tr>
+</tbody>
+</table>
+<p><strong>운영 원칙</strong>: 이미지 업로드가 하루 2장으로 제한되므로, 학생은 <strong>분석에 꼭 필요한 이미지만 골라서</strong> 하루 안에 끝내도록 계획을 세운다. 카드 1개(정면샷) + 상세페이지 대표 이미지 1개, 총 2장이면 이 차시 실습에 충분하다.</p>
+<hr />
+<h2>워크플로우 (4단계)</h2>
+<pre class="prompt"><code>[1] 이미지 준비 → [2] GPT로 이미지 분석 → [3] Claude로 콘텐츠 반영 → [4] Figma에 적용
+</code></pre>
+<h3>1단계 — 제품 이미지 준비</h3>
+<ul>
+<li>본인이 가진 실제 상품 사진, 또는 상업적 사용이 가능한 무료 스톡 이미지(Unsplash, Pexels 등)에서 실습용 상품 이미지를 고른다.</li>
+<li>최소 2장 확보: <strong>대표컷</strong>(정면, 카드용) + <strong>디테일컷</strong>(단면/사용 장면 등, 상세페이지용).</li>
+<li>저작권이 불분명한 이미지(타 브랜드 실제 제품 사진 무단 사용 등)는 포트폴리오에 올릴 수 없으므로 피한다.</li>
+</ul>
+<h3>2단계 — GPT로 이미지 분석 (하루 2장 한도 내에서)</h3>
+<p>ChatGPT Free에 이미지를 업로드하고 아래 프롬프트를 그대로 쓴다.</p>
+<pre class="prompt"><code>이 상품 이미지를 분석해줘.
+1. 이미지에서 두드러지는 주요 색상 3가지를 HEX 근사값으로 알려줘
+2. 제품의 형태/구도(정면/측면/클로즈업 등)를 설명해줘
+3. 이 이미지가 주는 전체적인 무드를 한 단어로 표현해줘 (예: 미니멀, 화려함, 따뜻함, 신뢰감)
+4. 이 이미지를 상세페이지의 어느 섹션(Hero/Benefit/Evidence/Feature 등)에 쓰면 좋을지, 그 이유와 함께 추천해줘
+</code></pre>
+<p>결과를 아래 표에 그대로 기록한다(워크북 WORK 11 참고).</p>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>기록</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>주요 색상 1/2/3</td>
+<td></td>
+</tr>
+<tr>
+<td>형태/구도</td>
+<td></td>
+</tr>
+<tr>
+<td>무드</td>
+<td></td>
+</tr>
+<tr>
+<td>추천 섹션</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3>3단계 — Claude로 콘텐츠를 이미지 톤에 맞추기</h3>
+<p>2단계 결과를 Claude에 그대로 붙여넣고 기존 카피(WORK06)를 다듬는다.</p>
+<pre class="prompt"><code>아래는 내가 GPT로 분석한 상품 이미지 정보야.
+- 주요 색상: {2단계 결과}
+- 무드: {2단계 결과}
+
+그리고 이건 내가 이전 차시에서 만든 카피야:
+{WORK06 카피 붙여넣기}
+
+이미지의 무드와 카피의 톤이 어울리는지 확인하고,
+어울리지 않는 표현이 있으면 무드에 맞게 다듬어줘.
+단, 사실 정보(가격, 수량, 성분 등)는 절대 바꾸지 마.
+</code></pre>
+<p>이 단계의 핵심은 "이미지 따로, 카피 따로"가 아니라 <strong>이미지가 주는 인상과 텍스트 톤을 일치시키는 것</strong> — 실무에서 상세페이지가 "따로 노는" 가장 흔한 원인이 바로 이 불일치다.</p>
+<h3>4단계 — Figma 템플릿에 적용</h3>
+<p>우리가 만든 두 템플릿의 이미지 레이어 이름을 그대로 찾아서 교체한다.</p>
+<table>
+<thead>
+<tr>
+<th>템플릿</th>
+<th>교체할 레이어</th>
+<th>방법</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>쿠팡 상품카드 컴포넌트</td>
+<td><code>ProductImage</code></td>
+<td>레이어 선택 → 우클릭 → Fill 이미지로 교체</td>
+</tr>
+<tr>
+<td>상세페이지 Section 1(Hero)</td>
+<td><code>ProductImage</code> (ProductVisual 프레임 내부)</td>
+<td>동일</td>
+</tr>
+<tr>
+<td>상세페이지 Section 2</td>
+<td><code>ProductPhoto_Package+Bite</code></td>
+<td>동일</td>
+</tr>
+<tr>
+<td>상세페이지 Section 4</td>
+<td><code>PackshotVisual</code> 내부 이미지</td>
+<td>동일</td>
+</tr>
+</tbody>
+</table>
+<p>이미지 교체 후 아래를 반드시 점검한다.</p>
+<ul>
+<li>2단계에서 추출한 색상이 배지/버튼 색상과 충돌하지 않는가 (충돌하면 Figma Variables 패널에서 <code>Card Colors</code> 컬렉션 값을 조정)</li>
+<li>이미지 위에 얹힌 텍스트의 명도 대비가 충분한가 (밝은 이미지 위에 흰 글씨 금지)</li>
+<li>이미지 비율이 원래 placeholder 비율과 크게 다르면 크롭/리사이즈로 맞춘다</li>
+</ul>
+<hr />
+<h2>포트폴리오 정리</h2>
+<ul>
+<li><strong>Before/After 비교 이미지</strong>를 반드시 남긴다 — placeholder 상태 스크린샷과 완성본을 나란히 배치하면 "AI 도구를 활용한 완성 과정"을 시각적으로 증명하는 가장 강력한 슬라이드가 된다.</li>
+<li>AI 작업 로그(<code>05_자기주도학습_포트폴리오_가이드.md</code> STEP 03)에 이번 차시 것도 추가한다 — 특히 "GPT 분석 결과 중 어떤 걸 그대로 썼고, 어떤 걸 수정했는가"를 기록하면 면접에서 설명하기 좋은 소재가 된다.</li>
+<li>면접 답변 예시: "GPT로 이미지의 색감과 무드를 먼저 분석하고, 그 결과를 Claude에 넘겨 카피 톤을 맞춘 뒤 Figma에 적용했습니다. 이미지와 텍스트가 따로 노는 상세페이지가 되지 않도록, 도구 간 결과물을 서로 검증하며 작업했습니다."</li>
+</ul>
+<hr />
+<h2>트러블슈팅</h2>
+<table>
+<thead>
+<tr>
+<th>증상</th>
+<th>원인</th>
+<th>해결</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GPT가 "오늘 이미지 업로드 한도 초과"라고 함</td>
+<td>무료 플랜 하루 2장 제한 초과</td>
+<td>다음날 재시도하거나, 꼭 필요한 이미지만 우선순위를 정해 분석</td>
+</tr>
+<tr>
+<td>이미지를 넣었더니 배지 글자가 안 보임</td>
+<td>이미지와 배지 색이 비슷하거나 명도 대비 부족</td>
+<td>Variables에서 배지 배경색 조정, 또는 배지에 흰 테두리(stroke) 추가</td>
+</tr>
+<tr>
+<td>Claude가 사실 정보(가격 등)까지 바꿔버림</td>
+<td>프롬프트에 "사실 정보는 바꾸지 마"를 명시하지 않음</td>
+<td>3단계 프롬프트처럼 반드시 제약 조건을 명시</td>
+</tr>
+<tr>
+<td>이미지 비율이 깨져서 늘어나 보임</td>
+<td>Fill 방식이 "Fill" 대신 "Fit"/"Stretch"로 되어 있음</td>
+<td>Figma Fill 설정에서 Scale 모드를 "Fill"로 변경</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>출처</h2>
+<p>ChatGPT 무료 플랜 이미지 업로드 한도(하루 2장, GPT-4o 기본): <a href="https://merlio.app/blog/chatgpt-image-upload-limits">merlio.app</a>, <a href="https://www.datastudios.org/post/chatgpt-free-plans-trials-and-subscriptions-gpt-4o-and-gpt-5-access-rate-limits-and-upgrade-pat">datastudios.org</a>. 무료 플랜 정책은 자주 바뀌므로 실제 수업 전 재확인 필요.</p>
+  <div class="footer-note">서울시기술교육원 컴퓨터그래픽디자인과 · 네이버 스마트스토어 상세페이지 MCP 교육 패키지</div>
+</div>
+</body>
+</html>

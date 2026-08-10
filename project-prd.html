@@ -77,7 +77,7 @@ blockquote p { margin: 0; white-space: normal; }
   name: "네이버 스마트스토어 상세페이지 제작 교육 (Claude-Figma MCP 연동)"
   version: "2.0"
   format: "Claude + Figma MCP Workflow (무료 플랜 대응 포함)"
-  duration: "5 sessions x 3 hours"
+  duration: "6 sessions x 3 hours"
   target:
     - "컴퓨터그래픽디자인과 교육생"
     - "취업준비생"
@@ -85,6 +85,7 @@ blockquote p { margin: 0; white-space: normal; }
   level: "초급~중급"
   changelog:
     - "v2.0: MCP 실연동 워크플로우, 네이버/쿠팡/카페24 3플랫폼 대응, 취업 포트폴리오 구성 전략, 2026 트렌드, 실무 팁 추가"
+    - "v2.1: 6차시 추가 — GPT 이미지 분석 → Claude 톤 조정 → Figma 템플릿 실제 이미지 적용 워크플로우"
 
 problem:
   - "상품 정보를 디자인으로 옮기는 과정이 체계적이지 않다."
@@ -126,6 +127,7 @@ workflow:
   step_09: "모바일 가독성/정보 정확성 검수"
   step_10: "플랫폼 확장 (쿠팡/카페24, 선택)"
   step_11: "최종 산출물 및 취업 포트폴리오"
+  step_12: "GPT 이미지 분석 → Claude 톤 조정 → 실제 이미지 템플릿 적용 (6차시)"
 
 mcp_integration:
   server_type: "Figma Dev Mode MCP Server (Remote 권장 — 무료 플랜 대응)"
@@ -133,6 +135,11 @@ mcp_integration:
   paid_alternative: "Professional 이상 Dev/Full 시트는 데스크톱 MCP 서버로 제한 없이 활용"
   reference_doc: "07_Figma_MCP_연동_설치가이드.md"
   fallback: "연결 실패 또는 호출 소진 시 기존 수동 카피 복붙 워크플로우로 전환"
+
+image_workflow:
+  tool: "ChatGPT Free (이미지 분석) + Claude Free (톤 조정) + Figma Starter (적용)"
+  plan_constraint: "ChatGPT Free는 하루 이미지 업로드 2장 제한, 기본 모델 GPT-4o(트래픽 시 GPT-4o mini로 자동 전환)"
+  reference_doc: "12_6차시_실제이미지_적용가이드.md"
 
 platform_coverage:
   primary: "네이버 스마트스토어 (전 차시 기본)"
@@ -179,6 +186,9 @@ session_plan:
   - id: 5
     title: "완성·QA·플랫폼 확장·취업 포트폴리오"
     outputs: ["최종 상세페이지", "QA 체크리스트", "플랫폼 확장(선택)", "취업용 케이스 스터디"]
+  - id: 6
+    title: "실제 제품 이미지로 템플릿 완성 (GPT 분석 → Claude 톤조정 → Figma 적용)"
+    outputs: ["GPT 이미지 분석 기록표", "톤 조정된 최종 카피", "실제 이미지 적용본", "Before/After 비교", "갱신된 포트폴리오 케이스 스터디"]
 
 assessment:
   strategy: 15
@@ -213,6 +223,8 @@ free_plan_operation:
     - "최종본은 하나의 파일 안에 Research/Wireframe/Design/Export/Portfolio/Platform Adapt 페이지로 구성"
     - "Starter 파일 제한을 고려해 학생별 파일 수를 최소화"
     - "MCP 리모트 서버는 월 6회 제한 — 4차시 핵심 실습에 집중"
+  chatgpt:
+    - "이미지 분석 전용으로만 활용 (하루 업로드 2장 제한 고려해 이미지 2장으로 사전 압축)"
 
 official_references:
   - "Naver Smart Store 고객센터: https://help.sell.smartstore.naver.com/"
@@ -221,6 +233,7 @@ official_references:
   - "Figma Dev Mode MCP Server 가이드: https://help.figma.com/hc/en-us/articles/32132100833559"
   - "쿠팡 Wing 상품 이미지 가이드라인: https://marketplace.coupangcorp.com/"
   - "카페24 Help Center 에디봇: https://support.cafe24.com/"
+  - "ChatGPT 무료 플랜 이미지 업로드 한도: https://merlio.app/blog/chatgpt-image-upload-limits"
 </code></pre>
   <div class="footer-note">서울시기술교육원 컴퓨터그래픽디자인과 · 네이버 스마트스토어 상세페이지 MCP 교육 패키지</div>
 </div>
