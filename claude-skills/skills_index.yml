@@ -14,6 +14,9 @@ skills:
   - id: figma-mcp-operator
     file: skill_05_figma_mcp_operator.md
     use_for: ["MCP연동", "Figma직접조작", "Figma읽기쓰기", "MCP트러블슈팅"]
+  - id: image-tone-integrator
+    file: skill_06_image_tone_integrator.md
+    use_for: ["이미지분석반영", "카피톤조정", "색상충돌점검", "6차시"]
 
 project_setup:
   recommended_project_name: "SmartStore Detail Page Lab"

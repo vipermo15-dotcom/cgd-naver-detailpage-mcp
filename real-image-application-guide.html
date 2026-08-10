@@ -77,6 +77,7 @@ blockquote p { margin: 0; white-space: normal; }
 <h2>이 차시가 필요한 이유</h2>
 <p class="subtitle">1~5차시에서 만든 카드 컴포넌트와 상세페이지는 전부 <strong>회색 placeholder</strong>로 채워져 있다. 포트폴리오로 제출하려면 실제(또는 실제처럼 보이는) 상품 이미지를 넣어 완성해야 한다. 이 차시는 그 "마지막 한 걸음"을 무료 도구 3종(Figma·Claude·GPT)만으로 끝내는 법을 다룬다.</p>
 <p><strong>전제</strong>: 학생은 이미 1~5차시를 마쳐 상품분석(WORK01~04)과 카피(WORK06)를 갖고 있고, <code>07_Figma_MCP_연동_설치가이드.md</code>의 <strong>트랙 A(무료 플러그인)</strong> 또는 직접 Figma 작업으로 카드/상세페이지 템플릿을 만들어 둔 상태다.</p>
+<p><strong><code>11_AI이미지생성_가이드.md</code>와 다른 점</strong>: 11번 문서는 AI로 <strong>새 이미지를 생성</strong>하는 파이프라인(ComfyUI/Midjourney/Gemini/GPT 이미지)을 다룬다. 이 문서는 <strong>이미 갖고 있는 실제(또는 실사 촬영) 이미지를 분석해서 템플릿에 맞춰 넣는</strong> 것이 목적이다 — 이미지를 "만드는" 게 아니라 "적용하는" 단계라는 점이 다르다.</p>
 <hr />
 <h2>반드시 먼저 확인: 무료 도구 제약</h2>
 <table>
@@ -152,7 +153,7 @@ blockquote p { margin: 0; white-space: normal; }
 </tbody>
 </table>
 <h3>3단계 — Claude로 콘텐츠를 이미지 톤에 맞추기</h3>
-<p>2단계 결과를 Claude에 그대로 붙여넣고 기존 카피(WORK06)를 다듬는다.</p>
+<p>2단계 결과를 Claude에 그대로 붙여넣고 기존 카피(WORK06)를 다듬는다. Claude Project에 <code>skill_06_image_tone_integrator.md</code>를 등록해두면 이 단계 전체를 스킬이 안내한다.</p>
 <pre class="prompt"><code>아래는 내가 GPT로 분석한 상품 이미지 정보야.
 - 주요 색상: {2단계 결과}
 - 무드: {2단계 결과}
