@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>교육생 워크북 (WORK 00~10)</title>
+<style>
+:root {
+  --paper: #f5f7f4; --paper-raised: #ffffff; --ink: #101b14; --ink-soft: #4a5c50;
+  --ink-faint: #85958c; --rule: #ccd9d0; --accent: #03A64A; --accent-soft: #03A64A1a;
+  --accent-2: #1D3A5F; --accent-2-soft: #1D3A5F1a;
+  --mono: ui-monospace, "SF Mono", "Menlo", "Consolas", monospace;
+  --sans: -apple-system, "Apple SD Gothic Neo", "Pretendard", "Malgun Gothic", "Segoe UI", sans-serif;
+}
+:root[data-theme="dark"] {
+  --paper: #0d1512; --paper-raised: #16211c; --ink: #eaf3ee; --ink-soft: #a7beaf;
+  --ink-faint: #6e8579; --rule: #253a30; --accent: #3DDC84; --accent-soft: #3DDC8426;
+  --accent-2: #6E9BCB; --accent-2-soft: #6E9BCB22;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0d1512; --paper-raised: #16211c; --ink: #eaf3ee; --ink-soft: #a7beaf;
+    --ink-faint: #6e8579; --rule: #253a30; --accent: #3DDC84; --accent-soft: #3DDC8426;
+    --accent-2: #6E9BCB; --accent-2-soft: #6E9BCB22;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--sans); line-height: 1.68; }
+.page { max-width: 780px; margin: 0 auto; padding: 4.5em 2em 6em; }
+.doc-head {
+  display: flex; justify-content: space-between; align-items: baseline;
+  border-bottom: 1px solid var(--rule); padding-bottom: .8em; margin-bottom: .4em;
+  font-family: var(--mono); font-size: 11.5px; letter-spacing: .06em; color: var(--ink-faint);
+  text-transform: uppercase;
+}
+.doc-head .accent { color: var(--accent); }
+h1 { font-size: clamp(28px, 3.8vw, 40px); font-weight: 800; letter-spacing: -0.01em; margin: .5em 0 .1em; text-wrap: balance; }
+.subtitle { color: var(--ink-soft); font-size: 15px; margin: 0 0 2.4em; }
+h2 { font-size: 22px; font-weight: 800; letter-spacing: -0.005em; margin: 2.2em 0 .5em; padding-top: 1.3em; border-top: 1px solid var(--rule); }
+h2:first-of-type { border-top: none; padding-top: 0; }
+h3 { font-size: 16.5px; font-weight: 700; margin: 1.5em 0 .4em; color: var(--ink); }
+h4 { font-size: 14px; font-weight: 700; margin: 1.2em 0 .3em; color: var(--ink-soft); }
+p { margin: .6em 0; white-space: pre-line; }
+strong { font-weight: 700; }
+hr { border: none; border-top: 1px solid var(--rule); margin: 2.2em 0; }
+a { color: var(--accent); }
+pre.prompt {
+  font-family: var(--mono); font-size: 13.5px; background: var(--ink); color: var(--paper);
+  padding: 1em 1.2em; line-height: 1.6; white-space: pre-wrap; word-break: break-word;
+  margin: .8em 0; border-left: 3px solid var(--accent); overflow-x: auto;
+}
+pre.prompt code { background: none; color: inherit; padding: 0; font-size: inherit; font-family: inherit; }
+:not(pre) > code { font-family: var(--mono); background: var(--accent-soft); color: var(--accent); padding: .1em .35em; font-size: .88em; border-radius: 2px; }
+table { border-collapse: collapse; width: 100%; font-size: 14px; margin: 1em 0; display: block; overflow-x: auto; }
+th, td { text-align: left; padding: .55em .8em .55em 0; border-bottom: 1px solid var(--rule); vertical-align: top; }
+th { font-family: var(--mono); font-size: 10.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-faint); font-weight: 500; }
+ol.steps { counter-reset: step; list-style: none; margin: .8em 0; padding: 0; }
+ol.steps li { counter-increment: step; display: grid; grid-template-columns: 1.8em 1fr; gap: .6em; padding: .5em 0; border-bottom: 1px solid var(--rule); align-items: baseline; font-size: 15px; }
+ol.steps li::before { content: counter(step, decimal-leading-zero); font-family: var(--mono); color: var(--accent); font-size: 13px; }
+ol.steps li:last-child { border-bottom: none; }
+ul.checklist { list-style: none; margin: .8em 0; padding: 0; }
+ul.checklist li { padding: .5em 0; border-bottom: 1px solid var(--rule); display: flex; gap: .7em; font-size: 15px; align-items: baseline; }
+ul.checklist li::before { content: "☐"; color: var(--accent); flex-shrink: 0; }
+ul.checklist li:last-child { border-bottom: none; }
+ul:not(.checklist) { padding-left: 1.3em; margin: .8em 0; }
+ul:not(.checklist) li { margin: .35em 0; font-size: 15px; }
+ul:not(.checklist) li::marker { color: var(--accent); }
+blockquote { margin: 1em 0; padding: .85em 1.1em; background: var(--accent-soft); border-left: 3px solid var(--accent); font-size: 14.5px; color: var(--ink-soft); }
+blockquote p { margin: 0; white-space: normal; }
+.footer-note { margin-top: 3em; padding-top: 1em; border-top: 1px solid var(--rule); font-family: var(--mono); font-size: 11.5px; color: var(--ink-faint); text-align: center; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="doc-head"><span class="accent">PROOF · SMARTSTORE MCP WORKBOOK</span><span>STUDENT WORKBOOK</span></div>
+<h1>교육생 워크북 — 스마트스토어 상세페이지</h1>
+<h2>사용법</h2>
+<p class="subtitle">모든 질문에 먼저 자신의 판단을 작성한 뒤 Claude에게 검증을 요청한다.</p>
+<hr />
+<h1>WORK 00 플랫폼 선택 (신규)</h1>
+<p>이 프로젝트를 어떤 플랫폼 조합으로 포트폴리오화할지 1차시에 결정한다. (<code>08_플랫폼별_상세페이지_제작가이드.md</code> 비교표 참고)</p>
+<ul class="checklist">
+<li><span>네이버 스마트스토어만 (기본, 5차시 내 완결)</span></li>
+<li><span>네이버 + 쿠팡 확장 (5차시 이후 1000×3000px 재구성 과제)</span></li>
+<li><span>네이버 + 쿠팡 + 카페24 확장 (HTML 퍼블리싱까지, 고급/포트폴리오 완성 단계 권장)</span></li>
+</ul>
+<p>선택 이유:
+목표 직무(선택):</p>
+<ul class="checklist">
+<li><span>인하우스 커머스 디자이너 / MD</span></li>
+<li><span>에이전시 상세페이지 디자이너</span></li>
+<li><span>프리랜서·1인샵</span></li>
+</ul>
+<p>(<code>05_자기주도학습_포트폴리오_가이드.md</code> STEP 00 직무 정렬과 연결)</p>
+<hr />
+<h1>WORK 01 상품 분석</h1>
+<p>상품명:
+브랜드:
+카테고리:
+가격:
+옵션:</p>
+<h3>기능</h3>
+<p>1.
+2.
+3.
+4.
+5.</p>
+<h3>기능 → 혜택</h3>
+<table>
+<thead>
+<tr>
+<th>기능</th>
+<th>사용자가 얻는 혜택</th>
+<th>구매 가치</th>
+<th>근거</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h1>WORK 02 구매자 정의</h1>
+<p>주 구매자:
+구매 상황:
+구매 전 고민:
+가장 중요한 기준:
+구매를 망설이는 이유:
+구매를 결정하는 순간:</p>
+<h3>한 문장 페르소나</h3>
+<p>"나는 ______ 상황에서 ______ 때문에 이 제품을 찾는다."</p>
+<hr />
+<h1>WORK 03 경쟁 분석</h1>
+<p>경쟁 상품 1:
+강점:
+약점:
+차별점:</p>
+<p>경쟁 상품 2:
+강점:
+약점:
+차별점:</p>
+<h3>우리 상품의 빈틈</h3>
+<p>"경쟁 상품은 ______을 강조하지만, 우리는 ______을 증명한다."</p>
+<hr />
+<h1>WORK 04 USP</h1>
+<p>우리 상품의 핵심 구매 이유 1:
+2:
+3:</p>
+<p>가장 강한 USP:
+근거:</p>
+<h3>핵심 메시지</h3>
+<p>"______한 사람에게 ______을 제공하는 ______ 제품"</p>
+<hr />
+<h1>WORK 05 상세페이지 스토리보드</h1>
+<table>
+<thead>
+<tr>
+<th>순서</th>
+<th>섹션</th>
+<th>구매자 질문</th>
+<th>핵심 메시지</th>
+<th>필요한 이미지</th>
+<th>증거</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>01</td>
+<td>Hero</td>
+<td>이게 뭐지?</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>02</td>
+<td>Problem</td>
+<td>왜 필요한가?</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>03</td>
+<td>Solution</td>
+<td>어떻게 해결하지?</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>04</td>
+<td>Benefits</td>
+<td>뭐가 좋은가?</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>05</td>
+<td>Evidence</td>
+<td>믿어도 되나?</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>06</td>
+<td>Feature</td>
+<td>어떻게 다른가?</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>07</td>
+<td>How-to</td>
+<td>어떻게 쓰나?</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>08</td>
+<td>Spec</td>
+<td>정확한 정보는?</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>09</td>
+<td>FAQ</td>
+<td>마지막 걱정은?</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>10</td>
+<td>CTA</td>
+<td>무엇을 하면 되나?</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h1>WORK 06 Claude 카피</h1>
+<p>Hero Headline:
+Hero Subcopy:</p>
+<p>Benefit 01:
+Benefit 02:
+Benefit 03:
+Benefit 04:
+Benefit 05:</p>
+<p>CTA:</p>
+<h3>금지/주의 표현</h3>
+<ul>
+<li>근거 없는 1위</li>
+<li>과도한 최고/최저</li>
+<li>의학적 효능처럼 오해될 표현</li>
+<li>객관적 증거 없는 수치</li>
+<li>경쟁사를 직접 비방하는 표현</li>
+<li>(신규) 허위/조작된 후기 톤 — UGC 스타일 카피라도 실제 근거 없이 "실사용 후기"처럼 단정하지 않는다</li>
+</ul>
+<hr />
+<h1>WORK 07 Figma 설계 (+ MCP 연동 실습)</h1>
+<p>Frame:
+Grid:
+Margin:
+Gutter:
+본문 크기:
+제목 크기:
+색상:
+이미지 비율:</p>
+<h3>컴포넌트</h3>
+<p>[ ] Section Header
+[ ] Benefit Card
+[ ] Icon + Text
+[ ] Comparison
+[ ] FAQ
+[ ] CTA
+[ ] Spec Table</p>
+<h3>(신규) MCP 실습 기록</h3>
+<p>연동 방식: [ ] 트랙 A 커스텀 플러그인(완전 무료, <code>figma-plugin-detail-generator/</code>) [ ] 트랙 B 리모트 MCP(무료 플랜, 월 6회 제한) [ ] 트랙 B 데스크톱 MCP(유료 플랜/기관 라이선스)
+MCP에게 요청한 내용:
+Claude가 생성/수정한 결과:
+내가 수정한 부분과 이유(최소 1개 필수):
+문제가 있었다면(연결 오류, 호출 제한 등):</p>
+<hr />
+<h1>WORK 08 QA</h1>
+<h3>콘텐츠</h3>
+<p>[ ] 상품명 일치
+[ ] 가격/옵션 일치
+[ ] 단위 정확
+[ ] 오탈자 없음
+[ ] 사실 근거 확인
+[ ] (신규) 표시광고법/과장 표현 재검수</p>
+<h3>UX</h3>
+<p>[ ] 첫 화면에서 상품/혜택 이해
+[ ] 섹션 순서 자연스러움
+[ ] 긴 문장 최소화
+[ ] 모바일 가독성 확보
+[ ] CTA 명확</p>
+<h3>디자인</h3>
+<p>[ ] 폰트 계층 명확
+[ ] 여백 일관
+[ ] 이미지 품질 양호
+[ ] 색상 대비 확보
+[ ] 컴포넌트 반복 규칙 일관
+[ ] (신규) 레이어/프레임 네이밍 정리</p>
+<h3>(신규) 짝 검수 (MD 역할 시뮬레이션)</h3>
+<p>검수자:
+발견한 문제:
+반영 여부:</p>
+<hr />
+<h1>WORK 09 포트폴리오 기록</h1>
+<p>프로젝트명:
+클라이언트/브랜드:
+기간:
+나의 역할:</p>
+<h3>문제</h3>
+<h3>조사</h3>
+<h3>핵심 인사이트</h3>
+<h3>전략</h3>
+<h3>정보구조</h3>
+<h3>디자인 시스템</h3>
+<h3>Claude 활용</h3>
+<h3>MCP 활용 (신규 — 사용한 경우만)</h3>
+<h3>Figma 활용</h3>
+<h3>대응 플랫폼 (신규 — 네이버/쿠팡/카페24 중 선택)</h3>
+<h3>결과</h3>
+<h3>배운 점</h3>
+<h3>다음 개선안</h3>
+<hr />
+<h1>WORK 10 취업용 포트폴리오 구성 전략 (신규)</h1>
+<p><code>05_자기주도학습_포트폴리오_가이드.md</code>를 먼저 읽고 작성한다.</p>
+<h3>목표 직무</h3>
+<h3>이 프로젝트가 그 직무에 필요한 어떤 역량을 증명하는가</h3>
+<h3>포트폴리오에서 이 프로젝트의 배치 순서(첫/중간/마지막 중 선택 + 이유)</h3>
+<h3>함께 넣을 다른 프로젝트와의 차별점</h3>
+<h3>이 프로젝트만의 한 줄 임팩트 문장</h3>
+<h3>예상 면접 질문 3개와 내 답변 초안</h3>
+  <div class="footer-note">서울시기술교육원 컴퓨터그래픽디자인과 · 네이버 스마트스토어 상세페이지 MCP 교육 패키지</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,33 @@
+skills:
+  - id: smartstore-strategy-director
+    file: skill_01_smartstore_strategy.md
+    use_for: ["상품분석", "USP", "타깃", "상세페이지기획", "플랫폼전략"]
+  - id: commerce-copywriter
+    file: skill_02_commerce_copywriter.md
+    use_for: ["카피", "Hero", "Benefit", "FAQ", "CTA", "표시광고리스크"]
+  - id: detailpage-art-director
+    file: skill_03_detailpage_art_director.md
+    use_for: ["Figma", "와이어프레임", "레이아웃", "타이포", "모바일UX", "MCP생성"]
+  - id: portfolio-case-study-coach
+    file: skill_04_portfolio_coach.md
+    use_for: ["포트폴리오", "케이스스터디", "면접", "채용공고매칭"]
+  - id: figma-mcp-operator
+    file: skill_05_figma_mcp_operator.md
+    use_for: ["MCP연동", "Figma직접조작", "Figma읽기쓰기", "MCP트러블슈팅"]
+
+project_setup:
+  recommended_project_name: "SmartStore Detail Page Lab"
+  knowledge:
+    - "상품 정보"
+    - "브랜드 가이드"
+    - "경쟁 상품 캡처"
+    - "리뷰/고객 질문"
+    - "학생 워크북"
+    - "플랫폼별 규격 표 (08_플랫폼별_상세페이지_제작가이드.md)"
+  instruction:
+    "모든 결과는 사실과 추정을 구분하고, 구매자 관점의 정보구조를 우선하며, 최종 디자인 판단은 학생이 수행하도록 코칭한다. MCP로 Figma를 직접 조작할 때는 항상 기존 스타일을 먼저 읽고, 생성 결과를 학생이 검수하도록 안내한다."
+
+mcp_notes:
+  free_plan_limit: "Figma Starter(무료) 플랜은 리모트 MCP 서버 기준 월 6회 호출 제한 — 4차시 핵심 실습에 집중 배정"
+  paid_plan: "Professional 이상 Dev/Full 시트면 데스크톱 MCP 서버로 제한 없이 활용 가능"
+  reference_doc: "07_Figma_MCP_연동_설치가이드.md"

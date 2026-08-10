@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>취업용 포트폴리오 구성 전략 가이드</title>
+<style>
+:root {
+  --paper: #f5f7f4; --paper-raised: #ffffff; --ink: #101b14; --ink-soft: #4a5c50;
+  --ink-faint: #85958c; --rule: #ccd9d0; --accent: #03A64A; --accent-soft: #03A64A1a;
+  --accent-2: #1D3A5F; --accent-2-soft: #1D3A5F1a;
+  --mono: ui-monospace, "SF Mono", "Menlo", "Consolas", monospace;
+  --sans: -apple-system, "Apple SD Gothic Neo", "Pretendard", "Malgun Gothic", "Segoe UI", sans-serif;
+}
+:root[data-theme="dark"] {
+  --paper: #0d1512; --paper-raised: #16211c; --ink: #eaf3ee; --ink-soft: #a7beaf;
+  --ink-faint: #6e8579; --rule: #253a30; --accent: #3DDC84; --accent-soft: #3DDC8426;
+  --accent-2: #6E9BCB; --accent-2-soft: #6E9BCB22;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0d1512; --paper-raised: #16211c; --ink: #eaf3ee; --ink-soft: #a7beaf;
+    --ink-faint: #6e8579; --rule: #253a30; --accent: #3DDC84; --accent-soft: #3DDC8426;
+    --accent-2: #6E9BCB; --accent-2-soft: #6E9BCB22;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--sans); line-height: 1.68; }
+.page { max-width: 780px; margin: 0 auto; padding: 4.5em 2em 6em; }
+.doc-head {
+  display: flex; justify-content: space-between; align-items: baseline;
+  border-bottom: 1px solid var(--rule); padding-bottom: .8em; margin-bottom: .4em;
+  font-family: var(--mono); font-size: 11.5px; letter-spacing: .06em; color: var(--ink-faint);
+  text-transform: uppercase;
+}
+.doc-head .accent { color: var(--accent); }
+h1 { font-size: clamp(28px, 3.8vw, 40px); font-weight: 800; letter-spacing: -0.01em; margin: .5em 0 .1em; text-wrap: balance; }
+.subtitle { color: var(--ink-soft); font-size: 15px; margin: 0 0 2.4em; }
+h2 { font-size: 22px; font-weight: 800; letter-spacing: -0.005em; margin: 2.2em 0 .5em; padding-top: 1.3em; border-top: 1px solid var(--rule); }
+h2:first-of-type { border-top: none; padding-top: 0; }
+h3 { font-size: 16.5px; font-weight: 700; margin: 1.5em 0 .4em; color: var(--ink); }
+h4 { font-size: 14px; font-weight: 700; margin: 1.2em 0 .3em; color: var(--ink-soft); }
+p { margin: .6em 0; white-space: pre-line; }
+strong { font-weight: 700; }
+hr { border: none; border-top: 1px solid var(--rule); margin: 2.2em 0; }
+a { color: var(--accent); }
+pre.prompt {
+  font-family: var(--mono); font-size: 13.5px; background: var(--ink); color: var(--paper);
+  padding: 1em 1.2em; line-height: 1.6; white-space: pre-wrap; word-break: break-word;
+  margin: .8em 0; border-left: 3px solid var(--accent); overflow-x: auto;
+}
+pre.prompt code { background: none; color: inherit; padding: 0; font-size: inherit; font-family: inherit; }
+:not(pre) > code { font-family: var(--mono); background: var(--accent-soft); color: var(--accent); padding: .1em .35em; font-size: .88em; border-radius: 2px; }
+table { border-collapse: collapse; width: 100%; font-size: 14px; margin: 1em 0; display: block; overflow-x: auto; }
+th, td { text-align: left; padding: .55em .8em .55em 0; border-bottom: 1px solid var(--rule); vertical-align: top; }
+th { font-family: var(--mono); font-size: 10.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-faint); font-weight: 500; }
+ol.steps { counter-reset: step; list-style: none; margin: .8em 0; padding: 0; }
+ol.steps li { counter-increment: step; display: grid; grid-template-columns: 1.8em 1fr; gap: .6em; padding: .5em 0; border-bottom: 1px solid var(--rule); align-items: baseline; font-size: 15px; }
+ol.steps li::before { content: counter(step, decimal-leading-zero); font-family: var(--mono); color: var(--accent); font-size: 13px; }
+ol.steps li:last-child { border-bottom: none; }
+ul.checklist { list-style: none; margin: .8em 0; padding: 0; }
+ul.checklist li { padding: .5em 0; border-bottom: 1px solid var(--rule); display: flex; gap: .7em; font-size: 15px; align-items: baseline; }
+ul.checklist li::before { content: "☐"; color: var(--accent); flex-shrink: 0; }
+ul.checklist li:last-child { border-bottom: none; }
+ul:not(.checklist) { padding-left: 1.3em; margin: .8em 0; }
+ul:not(.checklist) li { margin: .35em 0; font-size: 15px; }
+ul:not(.checklist) li::marker { color: var(--accent); }
+blockquote { margin: 1em 0; padding: .85em 1.1em; background: var(--accent-soft); border-left: 3px solid var(--accent); font-size: 14.5px; color: var(--ink-soft); }
+blockquote p { margin: 0; white-space: normal; }
+.footer-note { margin-top: 3em; padding-top: 1em; border-top: 1px solid var(--rule); font-family: var(--mono); font-size: 11.5px; color: var(--ink-faint); text-align: center; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="doc-head"><span class="accent">PROOF · SMARTSTORE MCP WORKBOOK</span><span>PORTFOLIO STRATEGY</span></div>
+<h1>자기주도 학습 → 취업용 포트폴리오 단계별 가이드</h1>
+<h2>STEP 00 직무 정렬 — 어디에 지원할 것인가 (신규)</h2>
+<p class="subtitle">같은 상세페이지 프로젝트라도 지원하는 직무에 따라 강조점이 완전히 달라진다. 먼저 목표를 정한다.</p>
+<table>
+<thead>
+<tr>
+<th>목표 직무</th>
+<th>채용공고가 실제로 보는 것</th>
+<th>이 프로젝트에서 강조할 부분</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>인하우스 커머스 디자이너 / MD 보조</td>
+<td>매출·전환에 대한 이해, 플랫폼 규정 숙지</td>
+<td>USP 도출 과정, 플랫폼별 규격 대응(예제 F), QA 꼼꼼함</td>
+</tr>
+<tr>
+<td>에이전시 상세페이지 디자이너</td>
+<td>다양한 브랜드 톤 소화력, 제작 속도, 비주얼 완성도</td>
+<td>비주얼 디자인 시스템, 컴포넌트 재사용성, 여러 예제(A~D) 다양성</td>
+</tr>
+<tr>
+<td>프리랜서 / 1인샵</td>
+<td>기획부터 등록까지 혼자 끝내는 능력</td>
+<td>전체 프로세스 완결성, AI/MCP 활용한 생산성, 카페24 HTML 퍼블리싱</td>
+</tr>
+</tbody>
+</table>
+<p><strong>하나만 고르지 않아도 된다</strong> — 다만 포트폴리오 전체에서 "이 사람은 어떤 역할에 강한가"가 한눈에 읽혀야 한다. WORK 00(워크북)에서 정한 목표 직무를 이 문서 전체에 걸쳐 계속 참조한다.</p>
+<hr />
+<h2>STEP 01 주제 선정</h2>
+<p>좋은 주제:</p>
+<ul>
+<li>실제 상품</li>
+<li>브랜드가 명확한 상품</li>
+<li>이미지 자료가 충분한 상품</li>
+<li>구매자와 구매상황이 명확한 상품</li>
+</ul>
+<p>피해야 할 주제:</p>
+<ul>
+<li>정보가 거의 없는 상품</li>
+<li>사실 확인이 어려운 상품</li>
+<li>과도하게 복잡한 상품군</li>
+</ul>
+<hr />
+<h2>STEP 02 자료 폴더 만들기</h2>
+<pre class="prompt"><code>SMARTSTORE_DETAIL_PROJECT/
+├── 01_RESEARCH/
+├── 02_CONTENT/
+├── 03_CLAUDE/
+├── 04_FIGMA/
+├── 05_EXPORT/
+│   ├── naver/
+│   ├── coupang/        (선택)
+│   └── cafe24/         (선택)
+└── 06_PORTFOLIO/
+</code></pre>
+<hr />
+<h2>STEP 03 AI 작업 로그 남기기</h2>
+<p>각 작업마다 다음 5개를 기록한다.</p>
+<ol class="steps">
+<li><span>내가 해결하려던 문제</span></li>
+<li><span>Claude에게 준 입력</span></li>
+<li><span>Claude의 제안</span></li>
+<li><span>내가 수정/거절한 이유</span></li>
+<li><span>최종 의사결정</span></li>
+</ol>
+<p>핵심은 "AI가 만들었다"가 아니라 "AI를 활용해 내가 어떤 디자인 의사결정을 했는가"이다.</p>
+<h3>STEP 03-B MCP 작업 로그 (신규, MCP 실습을 진행한 경우)</h3>
+<ol class="steps">
+<li><span>MCP로 무엇을 자동화했는가 (예: 프레임 생성, 컴포넌트 스타일 읽기)</span></li>
+<li><span>Claude가 만든 결과 중 그대로 채택한 것</span></li>
+<li><span>Claude가 만든 결과 중 수정/거부한 것과 이유</span></li>
+<li><span>MCP 없이 수동으로 했다면 얼마나 더 걸렸을지 비교</span></li>
+</ol>
+<p><strong>이 로그가 중요한 이유</strong>: "AI 도구를 쓸 줄 안다"는 이제 기본값이다. 채용시장에서 차별화되는 지점은 "AI 결과를 비판적으로 검수하고 판단을 내렸다"는 증거다. STEP 03/03-B는 그 증거를 남기는 절차다.</p>
+<hr />
+<h2>STEP 04 디자인 프로세스 기록</h2>
+<h3>Before</h3>
+<p>기존 상세페이지/경쟁 페이지의 문제</p>
+<h3>Research</h3>
+<p>시장/리뷰/경쟁 분석</p>
+<h3>Insight</h3>
+<p>"구매자는 ______을 가장 중요하게 생각한다."</p>
+<h3>Strategy</h3>
+<p>"따라서 상세페이지를 ______ 중심으로 구성했다."</p>
+<h3>Design</h3>
+<p>정보구조 → 와이어프레임 → 비주얼 디자인</p>
+<h3>Trend Judgment (신규)</h3>
+<p>2026 트렌드 5가지 중 이 프로젝트에 적용한 것과 보류한 것, 그 이유 (<code>09_상세페이지_트렌드_2026_취업시장.md</code> 종합 문장 템플릿 활용)</p>
+<h3>Platform Adaptation (신규, 확장한 경우만)</h3>
+<p>네이버 버전을 쿠팡/카페24로 재구성하며 무엇이 바뀌었는가</p>
+<h3>Result</h3>
+<p>최종 상세페이지</p>
+<h3>Reflection</h3>
+<p>다음 작업에서 개선할 점</p>
+<hr />
+<h2>STEP 05 포트폴리오 페이지 구성</h2>
+<ol class="steps">
+<li><span>Cover</span></li>
+<li><span>Project Overview</span></li>
+<li><span>Problem</span></li>
+<li><span>Research</span></li>
+<li><span>Persona</span></li>
+<li><span>Insight</span></li>
+<li><span>USP</span></li>
+<li><span>Content Strategy</span></li>
+<li><span>Storyboard</span></li>
+<li><span>Wireframe</span></li>
+<li><span>Design System</span></li>
+<li><span>Final Detail Page (플랫폼별로 나눠 배치 — 네이버 → 쿠팡 → 카페24 순)</span></li>
+<li><span>AI &amp; MCP Workflow (신규 — 기존 "AI Workflow"에서 확장)</span></li>
+<li><span>Trend Judgment (신규)</span></li>
+<li><span>Before/After</span></li>
+<li><span>Result</span></li>
+<li><span>Reflection</span></li>
+</ol>
+<hr />
+<h2>STEP 06 포트폴리오 전체 구성 전략 (신규)</h2>
+<p>이 프로젝트 하나가 아니라 <strong>포트폴리오 전체 안에서 이 프로젝트가 어떤 역할을 하는지</strong>가 채용 담당자의 첫인상을 결정한다.</p>
+<h3>프로젝트 배치 순서</h3>
+<ul>
+<li>상세페이지 프로젝트가 가장 강한 결과물이라면 <strong>1~2번째</strong>에 배치 (첫인상 승부)</li>
+<li>이미 더 강한 프로젝트(브랜딩/UI 등)가 있다면 <strong>"실무 즉시 투입 가능"을 증명하는 근거</strong>로 중간에 배치하고 첫 프로젝트에서 링크</li>
+</ul>
+<h3>다른 프로젝트와의 차별점 만들기</h3>
+<p>같은 교육과정 동기들과 포트폴리오가 겹치지 않으려면:</p>
+<ul>
+<li>상품 카테고리를 남들과 다르게 선택 (예제 A~D 중 겹치지 않는 것 우선)</li>
+<li>플랫폼 조합을 차별화(예제 F, 3플랫폼 대응은 이 과정 학생 대부분이 안 하는 지점)</li>
+<li>MCP 실습 경험을 명시 — 아직 채용시장에 흔하지 않은 스킬</li>
+</ul>
+<h3>포트폴리오 표지/목차에 넣을 스킬 키워드</h3>
+<p>"상품 리서치 · UX 카피라이팅 · 정보설계 · Figma 컴포넌트 시스템 · Claude/MCP AI 협업 · 멀티플랫폼(네이버·쿠팡·카페24) 대응"</p>
+<p>이 키워드 목록은 채용공고의 "우대사항"란과 매칭시켜 지원 직무마다 순서를 바꿔 강조한다(STEP 00 표 참고).</p>
+<hr />
+<h2>STEP 07 취업용 한 줄 설명</h2>
+<p>"Claude와 Figma MCP를 활용해 상품/구매자 분석과 상세페이지 콘텐츠 전략을 수립하고, 네이버·쿠팡·카페24 등 커머스 플랫폼 규칙에 맞춘 모바일 중심 상세페이지를 설계·제작했다."</p>
+<p>(MCP나 멀티플랫폼을 실습하지 않았다면 해당 부분을 빼고 기존 문장을 사용한다 — 하지 않은 것을 과장하지 않는다.)</p>
+<hr />
+<h2>STEP 08 면접 설명법</h2>
+<h3>질문: AI를 어떻게 사용했나요?</h3>
+<p>답변 구조:
+"Claude를 단순 이미지/카피 생성기로 사용하지 않고, 상품 분석 → USP → 콘텐츠 구조 → 카피 → QA의 단계별 보조 디렉터로 활용했습니다. 최종 판단과 디자인은 제가 수행했습니다."</p>
+<h3>질문: Figma MCP는 왜, 어떻게 썼나요? (신규)</h3>
+<p>"Claude가 Figma 파일의 기존 컴포넌트 스타일을 직접 읽고 카피를 반영한 프레임을 만들도록 했습니다. 다만 생성된 레이아웃 중 시선 흐름이 어색한 부분은 직접 수정했고, 그 판단 기준은 '첫 화면에서 가치제안이 보이는가'였습니다." — 도구 사용 여부보다 <strong>판단 기준을 언어화</strong>하는 게 핵심.</p>
+<h3>질문: 왜 여러 플랫폼 버전을 만들었나요? (신규)</h3>
+<p>"실무에서는 하나의 상품이 여러 채널에 동시에 등록되는 경우가 많다는 걸 알고, 같은 전략을 플랫폼별 규격과 사용자 흐름에 맞게 재구성하는 연습을 하고 싶었습니다."</p>
+<h3>질문: 디자인에서 가장 중요했던 점은?</h3>
+<p>"예쁜 화면보다 구매자가 어떤 순서로 정보를 이해하고 신뢰를 형성하는지를 먼저 설계했습니다."</p>
+<h3>질문: Figma에서 무엇을 했나요?</h3>
+<p>"모바일 프레임을 기준으로 정보 위계를 설계하고 Auto Layout과 컴포넌트로 반복 패턴을 관리했습니다."</p>
+<hr />
+<h2>STEP 09 채용공고 키워드 매칭 연습 (신규)</h2>
+<p>지원할 공고를 하나 골라 아래 표를 채운다.</p>
+<table>
+<thead>
+<tr>
+<th>공고에 쓰인 키워드/우대사항</th>
+<th>이 프로젝트에서 대응하는 근거</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>(예: "스마트스토어 상세페이지 제작 경험")</td>
+<td>5차시 전체 프로젝트, 네이버 규격 대응</td>
+</tr>
+<tr>
+<td>(예: "AI 툴 활용 가능자")</td>
+<td>Claude 작업 로그, MCP 실습 로그</td>
+</tr>
+<tr>
+<td>(예: "Figma 능숙자")</td>
+<td>컴포넌트 시스템, Auto Layout 실습</td>
+</tr>
+<tr>
+<td>(예: "다양한 채널 대응 경험")</td>
+<td>예제 F 3플랫폼 대응</td>
+</tr>
+</tbody>
+</table>
+<p>키워드가 매칭되지 않는 항목이 있다면 "부족하다"로 끝내지 말고, 자기소개서에서 "이 부분은 향후 어떻게 보완할 계획인지"로 전환한다.</p>
+<hr />
+<h2>STEP 10 최종 자기평가</h2>
+<p>전략:
+콘텐츠:
+정보구조:
+비주얼:
+UX:
+AI/MCP 활용:
+플랫폼 대응력:
+포트폴리오 설명력:</p>
+<p>가장 잘한 점:
+가장 아쉬운 점:
+다시 만든다면:</p>
+  <div class="footer-note">서울시기술교육원 컴퓨터그래픽디자인과 · 네이버 스마트스토어 상세페이지 MCP 교육 패키지</div>
+</div>
+</body>
+</html>

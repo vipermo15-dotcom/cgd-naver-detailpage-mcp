@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>실습 예제 A~F</title>
+<style>
+:root {
+  --paper: #f5f7f4; --paper-raised: #ffffff; --ink: #101b14; --ink-soft: #4a5c50;
+  --ink-faint: #85958c; --rule: #ccd9d0; --accent: #03A64A; --accent-soft: #03A64A1a;
+  --accent-2: #1D3A5F; --accent-2-soft: #1D3A5F1a;
+  --mono: ui-monospace, "SF Mono", "Menlo", "Consolas", monospace;
+  --sans: -apple-system, "Apple SD Gothic Neo", "Pretendard", "Malgun Gothic", "Segoe UI", sans-serif;
+}
+:root[data-theme="dark"] {
+  --paper: #0d1512; --paper-raised: #16211c; --ink: #eaf3ee; --ink-soft: #a7beaf;
+  --ink-faint: #6e8579; --rule: #253a30; --accent: #3DDC84; --accent-soft: #3DDC8426;
+  --accent-2: #6E9BCB; --accent-2-soft: #6E9BCB22;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0d1512; --paper-raised: #16211c; --ink: #eaf3ee; --ink-soft: #a7beaf;
+    --ink-faint: #6e8579; --rule: #253a30; --accent: #3DDC84; --accent-soft: #3DDC8426;
+    --accent-2: #6E9BCB; --accent-2-soft: #6E9BCB22;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--sans); line-height: 1.68; }
+.page { max-width: 780px; margin: 0 auto; padding: 4.5em 2em 6em; }
+.doc-head {
+  display: flex; justify-content: space-between; align-items: baseline;
+  border-bottom: 1px solid var(--rule); padding-bottom: .8em; margin-bottom: .4em;
+  font-family: var(--mono); font-size: 11.5px; letter-spacing: .06em; color: var(--ink-faint);
+  text-transform: uppercase;
+}
+.doc-head .accent { color: var(--accent); }
+h1 { font-size: clamp(28px, 3.8vw, 40px); font-weight: 800; letter-spacing: -0.01em; margin: .5em 0 .1em; text-wrap: balance; }
+.subtitle { color: var(--ink-soft); font-size: 15px; margin: 0 0 2.4em; }
+h2 { font-size: 22px; font-weight: 800; letter-spacing: -0.005em; margin: 2.2em 0 .5em; padding-top: 1.3em; border-top: 1px solid var(--rule); }
+h2:first-of-type { border-top: none; padding-top: 0; }
+h3 { font-size: 16.5px; font-weight: 700; margin: 1.5em 0 .4em; color: var(--ink); }
+h4 { font-size: 14px; font-weight: 700; margin: 1.2em 0 .3em; color: var(--ink-soft); }
+p { margin: .6em 0; white-space: pre-line; }
+strong { font-weight: 700; }
+hr { border: none; border-top: 1px solid var(--rule); margin: 2.2em 0; }
+a { color: var(--accent); }
+pre.prompt {
+  font-family: var(--mono); font-size: 13.5px; background: var(--ink); color: var(--paper);
+  padding: 1em 1.2em; line-height: 1.6; white-space: pre-wrap; word-break: break-word;
+  margin: .8em 0; border-left: 3px solid var(--accent); overflow-x: auto;
+}
+pre.prompt code { background: none; color: inherit; padding: 0; font-size: inherit; font-family: inherit; }
+:not(pre) > code { font-family: var(--mono); background: var(--accent-soft); color: var(--accent); padding: .1em .35em; font-size: .88em; border-radius: 2px; }
+table { border-collapse: collapse; width: 100%; font-size: 14px; margin: 1em 0; display: block; overflow-x: auto; }
+th, td { text-align: left; padding: .55em .8em .55em 0; border-bottom: 1px solid var(--rule); vertical-align: top; }
+th { font-family: var(--mono); font-size: 10.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-faint); font-weight: 500; }
+ol.steps { counter-reset: step; list-style: none; margin: .8em 0; padding: 0; }
+ol.steps li { counter-increment: step; display: grid; grid-template-columns: 1.8em 1fr; gap: .6em; padding: .5em 0; border-bottom: 1px solid var(--rule); align-items: baseline; font-size: 15px; }
+ol.steps li::before { content: counter(step, decimal-leading-zero); font-family: var(--mono); color: var(--accent); font-size: 13px; }
+ol.steps li:last-child { border-bottom: none; }
+ul.checklist { list-style: none; margin: .8em 0; padding: 0; }
+ul.checklist li { padding: .5em 0; border-bottom: 1px solid var(--rule); display: flex; gap: .7em; font-size: 15px; align-items: baseline; }
+ul.checklist li::before { content: "☐"; color: var(--accent); flex-shrink: 0; }
+ul.checklist li:last-child { border-bottom: none; }
+ul:not(.checklist) { padding-left: 1.3em; margin: .8em 0; }
+ul:not(.checklist) li { margin: .35em 0; font-size: 15px; }
+ul:not(.checklist) li::marker { color: var(--accent); }
+blockquote { margin: 1em 0; padding: .85em 1.1em; background: var(--accent-soft); border-left: 3px solid var(--accent); font-size: 14.5px; color: var(--ink-soft); }
+blockquote p { margin: 0; white-space: normal; }
+.footer-note { margin-top: 3em; padding-top: 1em; border-top: 1px solid var(--rule); font-family: var(--mono); font-size: 11.5px; color: var(--ink-faint); text-align: center; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="doc-head"><span class="accent">PROOF · SMARTSTORE MCP WORKBOOK</span><span>PRACTICE EXAMPLES</span></div>
+<h1>5차시 실습 예제</h1>
+<p class="subtitle">각 예제에 <strong>권장 대응 플랫폼</strong>과 <strong>트렌드 포인트</strong>를 표기했다 (<code>08_플랫폼별_상세페이지_제작가이드.md</code>, <code>09_상세페이지_트렌드_2026_취업시장.md</code> 참고).</p>
+<h2>예제 A — 식품/베이커리</h2>
+<h3>과제</h3>
+<p>20~40대 직장인이 모바일에서 빠르게 제품의 맛과 장점을 이해하도록 상세페이지를 설계한다.</p>
+<h3>핵심 데이터</h3>
+<ul>
+<li>제품: 간편하게 즐기는 베이커리</li>
+<li>구매상황: 아침/간식/선물</li>
+<li>핵심 가치: 간편성 + 맛 + 브랜드 감성</li>
+<li>필요한 근거: 원재료, 중량, 보관법, 배송/포장 정보</li>
+</ul>
+<h3>산출물</h3>
+<p>Hero + Benefit + Ingredient + How-to + Spec + FAQ + CTA</p>
+<h3>권장 대응 플랫폼</h3>
+<p>네이버(기본) + 쿠팡(포장/배송 정보가 명확해 이미지 나열형과 궁합이 좋음)</p>
+<h3>트렌드 포인트</h3>
+<p>숏폼(트렌드1): 포장 개봉 → 시식 장면 5초 컷 자리 설계</p>
+<hr />
+<h2>예제 B — 생활용품</h2>
+<h3>과제</h3>
+<p>"사용 전/사용 후"가 명확한 생활용품의 문제 해결형 상세페이지를 제작한다.</p>
+<h3>핵심 구조</h3>
+<p>Problem → Before → Solution → Feature → After → How-to → Spec</p>
+<h3>권장 대응 플랫폼</h3>
+<p>네이버(기본) + 카페24(Before/After를 스크롤 인터랙션으로 구현하기 좋은 구조)</p>
+<h3>트렌드 포인트</h3>
+<p>인터랙티브 스크롤(트렌드2): Before→After 전환 지점을 스크롤 트리거로 설계</p>
+<hr />
+<h2>예제 C — 패션 액세서리</h2>
+<h3>과제</h3>
+<p>제품의 디자인/소재/착용성을 중심으로 감성 + 정보형 상세페이지를 만든다.</p>
+<h3>핵심 구조</h3>
+<p>Mood → Product → Detail → Styling → Material → Size → Care → FAQ</p>
+<h3>권장 대응 플랫폼</h3>
+<p>네이버(기본) + 쿠팡(사이즈/소재 정보를 이미지 나열형에 압축하는 훈련)</p>
+<h3>트렌드 포인트</h3>
+<p>미니멀리즘(트렌드4): Mood 섹션은 여백을 최대한 활용, 텍스트 최소화</p>
+<hr />
+<h2>예제 D — 브랜드 굿즈</h2>
+<h3>과제</h3>
+<p>브랜드 세계관과 제품 구매 이유를 동시에 전달한다.</p>
+<h3>핵심 구조</h3>
+<p>Brand Story → Product Story → Design Detail → Collection → Spec → CTA</p>
+<h3>권장 대응 플랫폼</h3>
+<p>카페24(브랜드 스토리를 자유 레이아웃으로 풀기 좋음) + 네이버(기본)</p>
+<h3>트렌드 포인트</h3>
+<p>발견형 구매(트렌드5): SNS에서 우연히 발견해 들어오는 유입을 가정해 Hero에서 브랜드 세계관을 먼저 보여준다</p>
+<hr />
+<h2>예제 E — 학생 자기주도 프로젝트</h2>
+<p>학생이 실제 브랜드/가상의 브랜드를 선택한다.</p>
+<h3>조건</h3>
+<ol class="steps">
+<li><span>경쟁 상품 3개 이상 분석</span></li>
+<li><span>구매자 1명 정의</span></li>
+<li><span>USP 3개 도출</span></li>
+<li><span>8개 이상 섹션 제작</span></li>
+<li><span>Claude 작업 로그 저장 (MCP 사용 시 MCP 로그 포함)</span></li>
+<li><span>Figma 원본 공개 가능 상태로 정리</span></li>
+<li><span>포트폴리오 케이스 스터디 작성</span></li>
+<li><span>(신규) WORK 00에서 선택한 플랫폼 조합에 맞춰 최소 1개 플랫폼은 규격까지 맞춰 완성</span></li>
+</ol>
+<h3>평가</h3>
+<p>전략 20 / 콘텐츠 15 / 정보구조 20 / 비주얼 25 / UX 10 / 포트폴리오 10</p>
+<hr />
+<h2>예제 F — 3플랫폼 동시 대응 (신규, 고급/포트폴리오 완성 단계용)</h2>
+<h3>과제</h3>
+<p>예제 A~E 중 완성한 상품 하나를 골라 네이버·쿠팡·카페24 3개 버전으로 재구성한다. 새로 기획하지 않고 <strong>기존 콘텐츠를 각 플랫폼 규칙에 맞게 재배치하는 능력</strong>을 증명하는 것이 목표.</p>
+<h3>조건</h3>
+<ol class="steps">
+<li><span>네이버: 가로 860px 기준, 검색 키워드가 상단에 보이는 구성 유지</span></li>
+<li><span>쿠팡: 가로 1000px 이하 / 세로 3000px 단위 분할, 정보 압축</span></li>
+<li><span>카페24: HTML 퍼블리싱까지 진행, 인터랙션 최소 1개 이상 구현</span></li>
+<li><span>3개 버전의 차이점을 표로 정리해 포트폴리오에 포함 (<code>08_플랫폼별_상세페이지_제작가이드.md</code> 비교표 형식 참고)</span></li>
+</ol>
+<h3>평가 관점</h3>
+<p>"같은 콘텐츠를 플랫폼 규칙에 맞게 얼마나 빠르고 정확하게 재구성했는가" — 실무에서 가장 자주 발생하는 업무 유형이므로 포트폴리오 임팩트가 크다.</p>
+  <div class="footer-note">서울시기술교육원 컴퓨터그래픽디자인과 · 네이버 스마트스토어 상세페이지 MCP 교육 패키지</div>
+</div>
+</body>
+</html>
